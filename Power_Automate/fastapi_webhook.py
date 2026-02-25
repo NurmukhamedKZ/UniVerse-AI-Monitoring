@@ -35,6 +35,11 @@ class TeamsPayload(BaseModel):
     session_id: str = "default"
 
 
+@app.get("/")
+async def root():
+    return {"message": "Hello, World!"}
+
+
 @app.post("/process-email")
 async def process_email(payload: EmailPayload):
     history = conversation_history.get(payload.session_id, [])
