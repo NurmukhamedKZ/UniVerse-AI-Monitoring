@@ -59,7 +59,7 @@ async def process_email(payload: EmailPayload):
 
     conversation_history[payload.session_id] = [*history, human_msg, response]
 
-    return {"reply": reply}
+    return {"reply": reply, "session_id": payload.session_id}
 
 
 @app.post("/process-teams")
@@ -79,7 +79,7 @@ async def process_teams(payload: TeamsPayload):
 
     conversation_history[payload.session_id] = [*history, human_msg, response]
 
-    return {"reply": reply}
+    return {"reply": reply, "session_id": payload.session_id}
 
 
 @app.get("/health")
